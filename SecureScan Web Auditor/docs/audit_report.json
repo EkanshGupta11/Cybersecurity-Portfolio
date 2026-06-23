@@ -1,0 +1,21 @@
+{
+    "headers": {
+        "Content-Security-Policy": "NOT FOUND",
+        "Strict-Transport-Security": "NOT FOUND",
+        "X-Frame-Options": "SAMEORIGIN"
+    },
+    "findings": [
+        {
+            "issue": "Content-Security-Policy",
+            "severity": "High",
+            "recommendation": "Prevents XSS. Define a strict CSP policy."
+        },
+        {
+            "issue": "Strict-Transport-Security",
+            "severity": "Medium",
+            "recommendation": "Prevents SSL stripping. Set max-age >= 31536000."
+        }
+    ],
+    "directories": [],
+    "robots": true
+}
