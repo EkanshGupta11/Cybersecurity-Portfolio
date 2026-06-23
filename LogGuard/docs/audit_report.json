@@ -1,0 +1,15 @@
+{
+    "headers": {},
+    "findings": [
+        {
+            "issue": "Content-Security-Policy",
+            "severity": "High"
+        },
+        {
+            "issue": "Strict-Transport-Security",
+            "severity": "Medium"
+        }
+    ],
+    "directories": [],
+    "robots": false
+}
