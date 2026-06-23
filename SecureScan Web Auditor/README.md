@@ -1,138 +1,141 @@
-# LogGuard
+# SecureScan
 
-Threat Detection and Automated Response Platform
+OWASP-Aligned Web Security Auditing Framework
 
 ## Overview
 
-LogGuard is a defensive cybersecurity platform designed to analyze web server logs and identify indicators of malicious activity.
+SecureScan is a web application security auditing platform designed to identify common web security misconfigurations and reconnaissance indicators.
 
-The system performs real-time detection of attack patterns and can automatically respond through blocking and alerting mechanisms.
+The framework performs automated security header analysis, directory discovery, robots.txt inspection, and authenticated endpoint assessment while generating structured audit reports.
 
 ---
 
 ## Key Features
 
-### Brute Force Detection
+### Security Header Analysis
+
+- Content Security Policy (CSP)
+- HTTP Strict Transport Security (HSTS)
+- X-Frame-Options
+- X-Content-Type-Options
+
+Automatically identifies missing headers and provides remediation guidance.
+
+---
+
+### Directory Discovery
+
+Scans for:
+
+- /admin
+- /login
+- /config
+- /wp-admin
+- /backup
+
+using customizable wordlists.
+
+---
+
+### Robots.txt Analysis
 
 Identifies:
 
-- Repeated login failures
-- Credential stuffing patterns
-- Authentication abuse
+- Sensitive directories
+- Reconnaissance opportunities
+- Hidden application paths
 
 ---
 
-### SQL Injection Detection
-
-Detects signatures including:
-
-- UNION SELECT
-- OR 1=1
-- SQL keywords
-- Injection payload patterns
-
----
-
-### Cross-Site Scripting Detection
-
-Monitors for:
-
-- Script Injection Attempts
-- HTML Payloads
-- JavaScript Exploitation Signatures
-
----
-
-### Alert Throttling
-
-Prevents alert flooding by intelligently grouping repetitive events.
-
-Benefits:
-
-- Reduced analyst fatigue
-- Cleaner reporting
-- Better prioritization
-
----
-
-### Automated Blocking
-
-Can automatically:
-
-- Block malicious IP addresses
-- Quarantine suspicious sources
-- Generate incident logs
-
----
-
-### Log Parsing Engine
+### Authenticated Security Audits
 
 Supports:
 
-- Apache Logs
-- Nginx Logs
+- Bearer Tokens
+- Authenticated APIs
+- Internal Applications
 
-with extensible architecture for future integrations.
+allowing security reviews beyond public endpoints.
+
+---
+
+### Asynchronous Scanning Engine
+
+Built using:
+
+- asyncio
+- aiohttp
+
+Provides high-performance concurrent scanning while maintaining stability through controlled rate limiting.
+
+---
+
+### Soft-404 Detection
+
+Implements baseline fingerprinting to reduce false positives during directory enumeration.
+
+---
+
+### Reporting Engine
+
+Generates:
+
+- JSON Security Reports
+- Risk Summaries
+- Remediation Recommendations
 
 ---
 
 ## Architecture
 
-Apache/Nginx Logs
-         ↓
-Log Parsing Layer
-         ↓
-Threat Detection Engine
-         ↓
-Correlation Layer
-         ↓
-Alert Manager
-         ↓
-Automated Response
-
----
-
-## Detection Categories
-
-### Authentication Attacks
-
-- Brute Force
-- Credential Stuffing
-
-### Web Attacks
-
-- SQL Injection
-- XSS Attempts
-
-### Reconnaissance
-
-- Repeated Enumeration Activity
-- Suspicious Request Patterns
+Target Website
+      ↓
+HTTP Collection Layer
+      ↓
+Security Analysis Engine
+      ↓
+Directory Discovery Engine
+      ↓
+Risk Assessment Layer
+      ↓
+JSON Reporting System
 
 ---
 
 ## Technologies Used
 
 - Python
-- Regex
-- SQLite
-- Logging Frameworks
+- aiohttp
+- asyncio
+- JSON
+- OWASP Security Standards
 
 ---
 
-## Incident Workflow
+## Example Findings
 
-Log Event
-    ↓
-Threat Analysis
-    ↓
-Detection Match
-    ↓
-Alert Generation
-    ↓
-Response Action
+### Missing HSTS
+
+Risk:
+Potential SSL stripping attacks.
+
+Recommendation:
+Enable Strict-Transport-Security headers.
+
+---
+
+### Missing CSP
+
+Risk:
+Increased XSS attack surface.
+
+Recommendation:
+Implement Content Security Policy.
 
 ---
 
 ## Screenshots
-In Screenshots folder
+In Screenshots Folder
+- WAF Detection
+- CVE Correlation
+- Vulnerability Scoring Engine
